@@ -1,29 +1,35 @@
 few_shots = [
 {
-	"Question": "How many t-shirts do we have left for Nike in XS size and white color?",
-	'SQLQuery': "SELECT sum(stock_quantity) FROM t_shirts where brand='Nike' AND color='white' ",
+	"Question": "How many eden tea do we have left for 50g?",
+	'SQLQuery': "SELECT sum(stock_quantity) FROM fmcg_retail_goods where item='Eden Tea 50g' ",
 	'SQLResult': "Result of the SQL query",
-	'Answer': qns1 },
+	'Answer': 'qns1' },
 	{
-	"Question": "How much is the total price of the inventory for all S-size t-shirts?",
-	'SQLQuery': "SELECT sum(price * stock_quantity) FROM t_shirts where size='S'",
+	"Question": "How much is the total price of the inventory for all 2kgs Ngano flour?",
+	'SQLQuery': "SELECT sum(price * stock_quantity) FROM fmcg_retail_goods where item='Ngano Flour 2kgs'",
 	'SQLResult': "Result of the SQL query",
-	'Answer': qns2 },
+	'Answer': 'qns2' },
 {
-	"Question": "If we have to sell all the Levi's t-shirts today with disounts applied, how much revenue will be generated?",
-	'SQLQuery': "SELECT sum(price * stock_quantity) FROM t_shirts where size='S'",
+	"Question": "If we have to sell all the tissue in the store today, how much revenue will be generated?",
+	'SQLQuery': "SELECT sum(price * stock_quantity) FROM fmcg_retail_goods where item='Tissue'",
 	'SQLResult': "Result of the SQL query",
-	'Answer': qns3 },
+	'Answer': 'qns3' },
 
 	{
-	"Question": "If we have to sell all the Levi's t-shirts today, how much revenue will be generated?",
-	'SQLQuery': "SELECT sum(price * stock_quantity) FROM t_shirts where brand='Levi'",
+	"Question": "If we have to sell all the items in our inventory how much revenue will be generated?",
+	'SQLQuery': "SELECT sum(price * stock_quantity) FROM fmcg_retail_goods ",
 	'SQLResult': "Result of the SQL query",
-	'Answer': qns4 },
+	'Answer': 'qns4' },
 
 	{
-	"Question": "how many white color Levi's shirts are there?",
-	'SQLQuery': "SELECT sum(stock_quantity) FROM t_shirts where brand='Levi' AND color='white'",
+	"Question": "how many ordinary biro pen do we have left in stock?",
+	'SQLQuery': "SELECT sum(stock_quantity) FROM fmcg_retail_goods where item='Ordinary Biro Pen'",
 	'SQLResult': "Result of the SQL query",
-	'Answer': qns5 }
+	'Answer': 'qns5' },
+
+	{
+	"Question": "What is the running total of each item type in the inventory?",
+	'SQLQuery': "SELECT id, item, sum(price*stock_quantity) OVER (PARTITION BY item order by 3) AS running_total from fmcg_retail_goods",
+	'SQLResult': "Result of the SQL query",
+	'Answer': 'qns6' }
 ]
