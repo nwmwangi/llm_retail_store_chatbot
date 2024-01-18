@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def get_few_shot_db_chain()
+def get_few_shot_db_chain():
 	llm = GooglePalm(google_api_key=os.environ["GOOGLE_API_KEY"], temperature=0.1)
 	db_user = 'postgres'
 	db_password = 'postgres123'
